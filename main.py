@@ -15,7 +15,7 @@ def choose1():
   print(vehicleList[4])
 
 #menu loads 2
-def choose2():
+def choose3():
   print("Thank you for using the AutoCountry Vehicle Finder, good-bye!")
   raise SystemExit
 
@@ -25,15 +25,28 @@ def onLoadMenu():
   print("AutoCountry Vehicle Finder v0.1")
   print("********************************")
   print("Please enter the following number below from the following menu:")
-  print("1. Print all Authorized Vehicles")
-  print("2. Exit")
+  print("1. PRINT all Authorized Vehicles")
+  print("2. SEARCH all Authorized Vehicles")
+  print("3. EXIT")
   user_input=input()
   if user_input=="1":
-    return choose1() + onLoadMenu()
-
-    
-  if user_input=="2": 
-    choose2()
+    choose1()
+    onLoadMenu()
+  
+  if user_input=="3": 
+    choose3()
+  
+  if user_input=="2":
+    print("Please Enter the full Vehicle name:")
+  itemCheck= input()
+  if itemCheck in vehicleList:
+      print(itemCheck +" is an authorized vehicle")
+      (onLoadMenu())
+  
+  if itemCheck not in vehicleList:
+    print(itemCheck + " is not an authorized vehicle, if you received this in error ")
+  print("please check the spelling and try again")
+  onLoadMenu()
   
 #print menu
 print(onLoadMenu())
