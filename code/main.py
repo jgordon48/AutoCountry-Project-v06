@@ -4,15 +4,20 @@ vehicleList=['Ford F-150',
              'Tesla Cybertruck', 
              'Toyota Tundra',
              'Nissan Titan']
+
+authorizedVehicles="authorizedVehicles.txt"
+def saveVehicles():
+  with open(authorizedVehicles,"w") as file:
+    for vehicle in vehicleList:
+      file.write(vehicle+ "\n")
+
+
 #menu loads 1
 def choose1():
-  print("The AutoCountry sales manager has authorized the purchase and selling of") 
-  print("the following vehicles:")
-  print(vehicleList[0])
-  print(vehicleList[1])
-  print(vehicleList[2])
-  print(vehicleList[3])
-  print(vehicleList[4])
+  print("The AutoCountry sales manager has authorized the purchase and selling of \
+  the following vehicles:")
+  for vehicle in vehicleList:
+    print(vehicle)
 
 #menu loads 2
 def choose2():
@@ -23,11 +28,21 @@ def choose2():
       (onLoadMenu())
 
   if itemCheck not in vehicleList:
-    print(itemCheck + " is not an authorized vehicle, if you received this in error ")
-  print("please check the spelling and try again")
+    print(itemCheck + " is not an authorized vehicle, if you received this in error \
+    please check the spelling and try again")
   onLoadMenu()
+  
 #menu loads 3
 def choose3():
+  addVehicle = input("Please Enter the full Vehicle name you would like to add: ")
+  if addVehicle not in vehicleList:
+    vehicleList.append(addVehicle)
+    saveVehicles()
+  print("You have added '" + addVehicle + "' as an authorized vehicle")
+  onLoadMenu()
+  
+#menu loads 4
+def choose4():
   print("Thank you for using the AutoCountry Vehicle Finder, good-bye!")
   raise SystemExit
 
@@ -39,14 +54,18 @@ def onLoadMenu():
   print("Please enter the following number below from the following menu:")
   print("1. PRINT all Authorized Vehicles")
   print("2. SEARCH all Authorized Vehicles")
-  print("3. EXIT")
+  print("3. ADD Authorized Vehicle")
+  print("4. EXIT")
   user_input=input()
   if user_input=="1":
     choose1()
     onLoadMenu()
-  
+
   if user_input=="3": 
     choose3()
+    
+  if user_input=="4": 
+    choose4()
   
   if user_input=="2":
     choose2()
