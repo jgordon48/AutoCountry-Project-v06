@@ -3,7 +3,9 @@ vehicleList=['Ford F-150',
              'Chevrolet Silverado', 
              'Tesla Cybertruck', 
              'Toyota Tundra',
-             'Nissan Titan']
+             'Nissan Titan',
+             "Rivian R1T", 
+             "Ram 1500"]
 
 authorizedVehicles="authorizedVehicles.txt"
 def saveVehicles():
@@ -51,7 +53,7 @@ def choose4():
       if confirmRemoval == "yes":
         vehicleList.remove(removeVehicle)
         saveVehicles()
-  print("You have REMOVED '" + removeVehicle + "' as \
+        print("You have REMOVED '" + removeVehicle + "' as \
   an authorized vehicle")
   onLoadMenu()
   
