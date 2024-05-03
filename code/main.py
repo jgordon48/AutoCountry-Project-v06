@@ -43,6 +43,20 @@ def choose3():
   
 #menu loads 4
 def choose4():
+  removeVehicle = input("Please Enter the full Vehicle name you would \
+  like to REMOVE: ")
+  if removeVehicle in vehicleList:
+      confirmRemoval = input("Are you sure you want to remove '" + removeVehicle + "'\
+      from the Authorized vehicles List?: ")
+      if confirmRemoval == "yes":
+        vehicleList.remove(removeVehicle)
+        saveVehicles()
+  print("You have REMOVED '" + removeVehicle + "' as \
+  an authorized vehicle")
+  onLoadMenu()
+  
+#menu loads 5
+def choose5():
   print("Thank you for using the AutoCountry Vehicle Finder, good-bye!")
   raise SystemExit
 
@@ -55,7 +69,8 @@ def onLoadMenu():
   print("1. PRINT all Authorized Vehicles")
   print("2. SEARCH all Authorized Vehicles")
   print("3. ADD Authorized Vehicle")
-  print("4. EXIT")
+  print("4. DELETE Authorized Vehicle")
+  print("5. EXIT")
   user_input=input()
   if user_input=="1":
     choose1()
@@ -69,6 +84,10 @@ def onLoadMenu():
   
   if user_input=="2":
     choose2()
+
+  if user_input=="5":
+    choose5()
+  
   
 #print menu
 print(onLoadMenu())
